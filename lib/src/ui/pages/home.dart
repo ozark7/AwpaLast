@@ -44,7 +44,7 @@ class _homeState extends State<home> {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                SizedBox(height: 16),
+                SizedBox(height: 12),
                 GestureDetector(
                   onTap: toggleCardSize,
                   child: AnimatedContainer(
@@ -75,7 +75,7 @@ class _homeState extends State<home> {
                     ),
                   ),
                 ),
-                SizedBox(height: 16),
+                SizedBox(height: 12),
                 GestureDetector(
                   onTap: toggleCardSize,
                   child: AnimatedContainer(
@@ -106,7 +106,7 @@ class _homeState extends State<home> {
                     ),
                   ),
                 ),
-                SizedBox(height: 16),
+                SizedBox(height: 12),
                 GestureDetector(
                   onTap: toggleCardSize,
                   child: AnimatedContainer(

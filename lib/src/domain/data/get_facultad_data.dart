@@ -3,7 +3,7 @@ import '../models/facultad.dart';
 class GetFacultadData {
   static final List<Facultad> _facultadesList = [
     Facultad(
-      name: 'Ingenierías y Tecnológicas',
+      name: 'Ingenierías y\nTecnológicas',
       materias: '7',
       code: 'SSS01',
     ),
@@ -13,12 +13,12 @@ class GetFacultadData {
       code: 'SSS02',
     ),
     Facultad(
-      name: 'Ciencias de la Salud',
+      name: 'Ciencias de\nla Salud',
       materias: '9',
       code: 'SSS03',
     ),
     Facultad(
-      name: 'Ciencias administrativas',
+      name: 'Ciencias\nadministrativas',
       materias: '4',
       code: 'SSS04',
     ),
@@ -34,7 +34,6 @@ class GetFacultadData {
     ),
   ];
   final String foto;
-  GetFacultadData.fromJson(Map<String, dynamic> json):foto 
-  = json['foto'];
+  GetFacultadData.fromJson(Map<String, dynamic> json) : foto = json['foto'];
   static List<Facultad> get facultadesList => _facultadesList;
 }

@@ -10,7 +10,7 @@ import '../pages/profile.dart';
 import '../pages/home.dart';
 import '../pages/app.dart';
 
-String currentImage = "images/awpaICON.png";
+String currentImage = "images/awpaICON2.png";
 
 int _currentIndex2 = 0;
 
@@ -64,7 +64,7 @@ class _MenuState extends State<Menu> {
               text: "Home",
               textStyle: TextStyle(fontSize: 10),
               iconActiveColor: Colors.white,
-              textColor: Colors.white,
+              textColor: Colors.black,
             ),
             GButton(
               icon: Icons.menu_book_outlined,
@@ -156,8 +156,6 @@ class AppBarUtil {
       ),
       title: GestureDetector(
         onTap: () {
-          // Lógica para manejar el clic en la imagen del AppBar
-          // Por ejemplo, puedes navegar a la pantalla de inicio
           Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => Menu()),

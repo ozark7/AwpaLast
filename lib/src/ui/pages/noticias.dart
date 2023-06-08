@@ -40,7 +40,8 @@ class News extends StatelessWidget {
                         child: Image(
                           width: 1000,
                           fit: BoxFit.cover,
-                          image: NetworkImage(item),
+                          image: NetworkImage(
+                              'https://cdn.pixabay.com/photo/2023/05/28/05/34/bird-8022869_640.jpg'),
                         )),
                     /* Ink.image(image:AssetImage(item), fit: BoxFit.cover,width: 1000.0,child: GestureDetector(onTap: (){
                       launch("https://www.youtube.com/watch?v=E6zyrc8F-dA");
