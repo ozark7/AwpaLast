@@ -63,7 +63,7 @@ class _homeState extends State<home> {
                       child: Padding(
                         padding: const EdgeInsets.all(16.0),
                         child: Text(
-                          'CREADORES:\n\nCristian B\nAndres R',
+                          'CREADORES:\n\nCristian B\nAndres R\nJuan C',
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontSize: 18,

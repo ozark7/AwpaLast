@@ -1,3 +1,4 @@
+import 'package:awpa/src/domain/models/widgets.dart';
 import 'package:awpa/src/ui/pages/profile.dart';
 import 'package:awpa/src/ui/screens/menu.dart';
 import 'package:flutter/material.dart';
@@ -25,7 +26,10 @@ class _docentesState extends State<docentes> {
             padding:
                 const EdgeInsets.symmetric(horizontal: 30.0, vertical: 50.0),
             children: <Widget>[
-              cardDocentes(context, "Docente1", "images/facultad.png"),
+              CarDocentes(docente: "Wendy Santana", image: "images/guess_user.png"),
+              CarDocentes(docente: "Braulio Barrios", image: "images/guess_user.png"),
+              CarDocentes(docente: "Estefany Mendes", image: "images/guess_user.png"),
+              CarDocentes(docente: "Maribel Castañez", image: "images/guess_user.png")
             ],
           ),
         ));
@@ -39,7 +43,7 @@ class _docentesState extends State<docentes> {
         child: TextButton(
           onPressed: () {
             Navigator.push(context,
-                MaterialPageRoute(builder: (context) => const Profile()));
+                MaterialPageRoute(builder: (context) => const Profile(image: "Aro",name: "El pepi")));
           },
           style: ButtonStyle(
             backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
@@ -68,4 +72,5 @@ class _docentesState extends State<docentes> {
       ),
     ]);
   }
+  
 }

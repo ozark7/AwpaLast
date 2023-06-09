@@ -121,7 +121,7 @@ class AppBarUtil {
                 context,
                 PageRouteBuilder(
                   pageBuilder: (context, animation, secondaryAnimation) =>
-                      Profile(),
+                      Profile(image: "images/guess_user.png",name: "USER",),
                   transitionsBuilder:
                       (context, animation, secondaryAnimation, child) {
                     return FadeTransition(
