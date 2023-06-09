@@ -10,6 +10,80 @@ class MyAppForm extends StatefulWidget {
 }
 
 class _MyAppFormState extends State<MyAppForm> {
+  TextEditingController usernameController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  late FocusNode usernameFocusNode;
+
+  @override
+  void initState() {
+    super.initState();
+    usernameFocusNode = FocusNode();
+  }
+
+  @override
+  void dispose() {
+    usernameController.dispose();
+    emailController.dispose();
+    passwordController.dispose();
+    usernameFocusNode.dispose();
+    super.dispose();
+  }
+
+  void _submitForm() {
+    if (_formKey.currentState!.validate()) {
+      String username = usernameController.text;
+      String email = emailController.text;
+      String password = passwordController.text;
+
+      if (username == 'j' && email == 'j' && password == 'j') {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const Menu()),
+        );
+      } else if (username == 'juan' &&
+          email == 'juan@gmail.com' &&
+          password == 'juan') {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const Menu()),
+        );
+      } else if (username == 'cristian' &&
+          email == 'cristian@gmail.com' &&
+          password == 'cristian') {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const Menu()),
+        );
+      } else {
+        showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: const Text('Error al ingresar'),
+              content: const Text('Los datos ingresados son incorrectos.'),
+              actions: [
+                TextButton(
+                  onPressed: () {
+                    usernameController.clear();
+                    emailController.clear();
+                    passwordController.clear();
+                    Navigator.of(context).pop();
+                  },
+                  child: const Text('OK'),
+                ),
+              ],
+            );
+          },
+        ).then((value) {
+          FocusScope.of(context).requestFocus(FocusNode());
+          FocusScope.of(context).requestFocus(usernameFocusNode);
+        });
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -17,17 +91,6 @@ class _MyAppFormState extends State<MyAppForm> {
       body: Container(
         width: double.infinity,
         height: double.infinity,
-        /*
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            colors: <Color>[
-              Color.fromARGB(159, 138, 246, 176),
-              Color.fromARGB(137, 214, 139, 239),
-            ],
-            begin: Alignment.center,
-          ),
-        ),
-        */
         child: ListView(
           padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 10.0),
           children: <Widget>[
@@ -42,8 +105,14 @@ class _MyAppFormState extends State<MyAppForm> {
                   radius: 60,
                   child: Padding(
                     padding: EdgeInsets.all(8.0),
-                    child: Image.asset(
-                      'image/awpaICON2.png', // Reemplaza 'ruta_de_la_imagen' con la ruta de la imagen local
+                    child: Container(
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        border: Border.all(
+                          color: Colors.white,
+                          width: 2.0,
+                        ),
+                      ),
                     ),
                   ),
                 ),
@@ -58,52 +127,81 @@ class _MyAppFormState extends State<MyAppForm> {
                       color: AppTheme.accentColor),
                 ),
                 const Divider(height: 5, color: Colors.white),
-                TextField(
-                  enableInteractiveSelection: false,
-                  autofocus: true,
-                  textCapitalization: TextCapitalization.characters,
-                  decoration: InputDecoration(
-                    hintText: "Username",
-                    labelText: "Username",
-                    suffixIcon:
-                        const Icon(Icons.person_outline, color: Colors.black),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20.0),
-                    ),
-                  ),
-                  style: const TextStyle(color: Colors.black),
-                ),
-                const Divider(
-                  height: 18.0,
-                ),
-                TextField(
-                  decoration: InputDecoration(
-                    hintText: "Email",
-                    labelText: "Email",
-                    hintStyle: const TextStyle(color: Colors.black),
-                    suffixIcon: const Icon(
-                      Icons.alternate_email,
-                      color: Colors.black,
-                    ),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20.0),
-                    ),
-                  ),
-                ),
-                const Divider(height: 18),
-                TextField(
-                  enableInteractiveSelection: false,
-                  obscureText: true,
-                  decoration: InputDecoration(
-                    hintText: "Password",
-                    labelText: "Password",
-                    suffixIcon: const Icon(
-                      Icons.lock_outline,
-                      color: Colors.black,
-                    ),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20.0),
-                    ),
+                Form(
+                  key: _formKey,
+                  child: Column(
+                    children: [
+                      TextFormField(
+                        controller: usernameController,
+                        enableInteractiveSelection: false,
+                        autofocus: true,
+                        textCapitalization: TextCapitalization.characters,
+                        focusNode: usernameFocusNode,
+                        decoration: InputDecoration(
+                          hintText: "Username",
+                          labelText: "Username",
+                          suffixIcon: const Icon(Icons.person_outline,
+                              color: Colors.black),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20.0),
+                          ),
+                        ),
+                        style: const TextStyle(color: Colors.black),
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Por favor ingresa tu nombre de usuario';
+                          }
+                          return null;
+                        },
+                      ),
+                      const Divider(
+                        height: 18.0,
+                      ),
+                      TextFormField(
+                        controller: emailController,
+                        decoration: InputDecoration(
+                          hintText: "Email",
+                          labelText: "Email",
+                          hintStyle: const TextStyle(color: Colors.black),
+                          suffixIcon: const Icon(
+                            Icons.alternate_email,
+                            color: Colors.black,
+                          ),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20.0),
+                          ),
+                        ),
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Por favor ingresa tu correo electrónico';
+                          }
+                          return null;
+                        },
+                      ),
+                      const Divider(height: 18),
+                      TextFormField(
+                        controller: passwordController,
+                        enableInteractiveSelection: false,
+                        obscureText: true,
+                        decoration: InputDecoration(
+                          hintText: "Password",
+                          labelText: "Password",
+                          suffixIcon: const Icon(
+                            Icons.lock_outline,
+                            color: Colors.black,
+                          ),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20.0),
+                          ),
+                        ),
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Por favor ingresa tu contraseña';
+                          }
+                          return null;
+                        },
+                      ),
+                    ],
                   ),
                 ),
                 const SizedBox(
@@ -112,12 +210,7 @@ class _MyAppFormState extends State<MyAppForm> {
                 SizedBox(
                   width: double.infinity,
                   child: TextButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => const Menu()),
-                      );
-                    },
+                    onPressed: _submitForm,
                     style: ButtonStyle(
                       shape: MaterialStateProperty.all<OutlinedBorder>(
                         RoundedRectangleBorder(

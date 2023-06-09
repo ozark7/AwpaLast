@@ -26,12 +26,48 @@ class News extends StatelessWidget {
                 borderRadius: const BorderRadius.all(Radius.circular(5.0)),
                 child: Stack(
                   children: <Widget>[
-                    Image.asset(
-                      item, // Usa Image.asset en lugar de Image.network
-                      fit: BoxFit.cover,
-                      width: 1000.0,
+                    GestureDetector(
+                      onTap: () {
+                        if (item == 'images/teatro.jpg') {
+                          launch(
+                            'https://www.unicesar.edu.co/images/2022/BAAAAAAAAAAAAAAAACUL3.jpg',
+                          );
+                        } else if (item == 'images/grado.jpg') {
+                          launch(
+                            'https://www.unicesar.edu.co/images/2022/BAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAr-grado.jpg',
+                          );
+                        } else if (item == 'images/1.jpg') {
+                          launch(
+                            'https://www.unicesar.edu.co/images/2022/BAAAAAAAAAA1.jpg',
+                          );
+                        } else if (item == 'images/web.jpg') {
+                          launch(
+                            'https://www.unicesar.edu.co/images/2022/BAAAAAAAAAAAAAAAAAAAAAAAAAAAAA3anner%20tipo%20de%20pregunta%20aula%20web.jpg',
+                          );
+                        } else if (item == 'images/fer.jpg') {
+                          launch(
+                            'https://www.unicesar.edu.co/images/2022/BAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAanneenfer.jpg',
+                          );
+                        } else if (item == 'images/estudiante.jpg') {
+                          launch(
+                            'https://www.unicesar.edu.co/images/2022/BAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAanner-celebraciondiadelestudoiante.jpg',
+                          );
+                        } else if (item == 'images/anners.jpg') {
+                          launch(
+                            'https://www.unicesar.edu.co/images/2022/BAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAannerseimiario.jpg',
+                          );
+                        } else if (item == 'images/anners-.jpg') {
+                          launch(
+                            'https://www.unicesar.edu.co/images/2022/BAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAanners-.jpg',
+                          );
+                        }
+                      },
+                      child: Image.asset(
+                        item,
+                        fit: BoxFit.cover,
+                        width: 1000.0,
+                      ),
                     ),
-                    // Resto del código...
                   ],
                 ),
               ),
@@ -72,47 +108,25 @@ class News extends StatelessWidget {
                   initialPage: 2,
                   autoPlay: true,
                 ),
-                items: [
-                  imageSliders[0],
-                  imageSliders[1],
-                  imageSliders[2],
-                  imageSliders[3],
-                  imageSliders[4],
-                  imageSliders[5],
-                  imageSliders[6],
-                  imageSliders[7],
-                ],
+                items: imageSliders,
               ),
               SingleNoticeCard(
-                imgListValue:
-                    'images/exposoftware.jpg', // Ruta de la imagen local
+                imgListValue: 'images/exposoftware.jpg',
                 textValue: NoticiaList[0].description,
                 urlValue: NoticiaList[0].url,
               ),
               SingleNoticeCard(
-                imgListValue:
-                    'images/encuestafinal.jpg', // Ruta de la imagen local
+                imgListValue: 'images/encuestafinal.jpg',
                 textValue: NoticiaList[1].description,
                 urlValue: NoticiaList[1].url,
               ),
+              // Agrega más SingleNoticeCard según sea necesario
             ],
           ),
         ),
       ),
     );
   }
-}
-
-List<SingleNoticeCard> noticias() {
-  List<SingleNoticeCard> lista = [];
-  NoticiaList.forEach((element) {
-    lista.add(SingleNoticeCard(
-      imgListValue: element.image,
-      textValue: element.description,
-      urlValue: element.url,
-    ));
-  });
-  return lista;
 }
 
 class SingleNoticeCard extends StatelessWidget {
@@ -133,8 +147,7 @@ class SingleNoticeCard extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: Container(
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(
-              5.0), // Ajusta el valor de 10.0 según tus necesidades
+          borderRadius: BorderRadius.circular(5.0),
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -142,7 +155,6 @@ class SingleNoticeCard extends StatelessWidget {
           children: [
             GestureDetector(
               onTap: () {
-                // Reemplaza con tu enlace deseado
                 launch(urlValue);
               },
               child: Image(

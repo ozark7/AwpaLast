@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../pages/publicaciones.dart';
 
 class Profile extends StatefulWidget {
@@ -43,7 +44,7 @@ class _ProfileState extends State<Profile> {
               mainAxisAlignment: MainAxisAlignment.end,
               children: <Widget>[
                 UserProfile(
-                  profileImage: "images/image.png",
+                  profileImage: "images/personProfile.jpg",
                   size: 170,
                 ),
                 //SizedBox(height: 20),
@@ -62,13 +63,15 @@ class _ProfileState extends State<Profile> {
             margin:
                 EdgeInsetsDirectional.symmetric(horizontal: 150, vertical: 10),
             child: TextButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => publicaciones()),
-                );
+              onPressed: () async {
+                const url = 'https://minciencias.gov.co/content/cvlac';
+                if (await canLaunch(url)) {
+                  await launch(url);
+                } else {
+                  throw 'Could not launch $url';
+                }
               },
-              child: Text("Publicaciones"),
+              child: Text("--> CVLAC <--"),
               style: ButtonStyle(
                 padding:
                     MaterialStateProperty.all<EdgeInsets>(EdgeInsets.all(20)),
@@ -78,6 +81,13 @@ class _ProfileState extends State<Profile> {
                 foregroundColor: MaterialStateProperty.all<Color>(
                     Colors.white), // Cambia el color del texto del botón a rojo
               ),
+            ),
+          ),
+          Container(
+            padding: EdgeInsets.all(20),
+            child: Text(
+              'Nuestro docente de la UPC es altamente capacitado y está comprometido con la excelencia académica. Con una sólida formación en su área de especialización, posee un profundo conocimiento de los fundamentos teóricos y prácticos de la disciplina que imparte. Su experiencia y habilidades pedagógicas le permiten transmitir de manera clara y efectiva los conceptos más complejos a sus estudiantes.',
+              style: TextStyle(fontSize: 16),
             ),
           ),
           /* Container(
