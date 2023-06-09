@@ -13,14 +13,14 @@ class _docentesState extends State<docentes> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: const Color.fromARGB(255, 204, 201, 201),
+        backgroundColor: const Color(0xFFE2E8ED),
         body: Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(
                 40.0), // Ajusta el valor de 10.0 según tus necesidades
             color: Colors.white, // Color de fondo del ListView
           ),
-          margin: const EdgeInsets.only(bottom: 10, top: 10),
+          margin: const EdgeInsets.only(bottom: 10, top: 10, left: 3, right: 3),
           child: ListView(
             padding:
                 const EdgeInsets.symmetric(horizontal: 30.0, vertical: 50.0),

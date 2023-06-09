@@ -9,6 +9,8 @@ import 'package:google_nav_bar/google_nav_bar.dart';
 import '../pages/profile.dart';
 import '../pages/home.dart';
 import '../pages/app.dart';
+import '../pages/facultades.dart';
+import '../pages/docentes.dart';
 
 String currentImage = "images/awpaICON2.png";
 

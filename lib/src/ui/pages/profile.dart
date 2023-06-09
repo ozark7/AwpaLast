@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../pages/publicaciones.dart';
 
 class Profile extends StatefulWidget {
   const Profile({super.key});
@@ -61,7 +62,12 @@ class _ProfileState extends State<Profile> {
             margin:
                 EdgeInsetsDirectional.symmetric(horizontal: 150, vertical: 10),
             child: TextButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => publicaciones()),
+                );
+              },
               child: Text("Publicaciones"),
               style: ButtonStyle(
                 padding:
@@ -74,7 +80,7 @@ class _ProfileState extends State<Profile> {
               ),
             ),
           ),
-          Container(
+          /* Container(
             margin: EdgeInsetsDirectional.symmetric(),
             child: const Center(
               child: Text(
@@ -82,8 +88,8 @@ class _ProfileState extends State<Profile> {
                 style: TextStyle(color: Colors.black),
               ),
             ),
-          ),
-          Container(
+          ), */
+          /* Container(
             height: 150,
             width: 20,
             child: SingleChildScrollView(
@@ -107,7 +113,7 @@ class _ProfileState extends State<Profile> {
                 ],
               ),
             ),
-          ),
+          ), */
           /* Container(
             margin: EdgeInsetsDirectional.only(start: 200, end: 200, top: 50),
             child: const Center(

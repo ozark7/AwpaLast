@@ -37,15 +37,13 @@ class _MyAppFormState extends State<MyAppForm> {
                 const SizedBox(
                   height: 50,
                 ),
-                const CircleAvatar(
+                CircleAvatar(
                   backgroundColor: AppTheme.accentColor,
                   radius: 60,
                   child: Padding(
                     padding: EdgeInsets.all(8.0),
-                    child: Icon(
-                      Icons.book,
-                      size: 70,
-                      color: Colors.white,
+                    child: Image.asset(
+                      'image/awpaICON2.png', // Reemplaza 'ruta_de_la_imagen' con la ruta de la imagen local
                     ),
                   ),
                 ),

@@ -11,14 +11,15 @@ class _publicacionesState extends State<publicaciones> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Color.fromARGB(255, 204, 201, 201),
+        //appBar: AppBar(),
+        backgroundColor: const Color(0xFFE2E8ED),
         body: Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(
                 40.0), // Ajusta el valor de 10.0 según tus necesidades
             color: Colors.white, // Color de fondo del ListView
           ),
-          margin: EdgeInsets.only(bottom: 10, top: 10),
+          margin: const EdgeInsets.only(bottom: 10, top: 10, left: 3, right: 3),
           child: ListView(
             padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 50.0),
             children: <Widget>[
